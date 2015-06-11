@@ -16,7 +16,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.survey_id %></td>
+        <td><%= question.survey.name %></td>
         <td><%= question.text %></td>
         <td><%= question.required %></td>
         <td><%= question.number %></td>
@@ -31,3 +31,4 @@
 <br>
 
 <%= link_to 'New Question', new_question_path %>
+<%= link_to 'Home', root_path %>
