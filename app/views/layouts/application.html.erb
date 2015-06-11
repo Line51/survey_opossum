@@ -8,6 +8,9 @@
 </head>
 <body>
 
+<%= link_to "Logout", sessions_logout_path if session[:user_id] %>
+<p id="notice"><%= notice %></p>
+
 <%= yield %>
 
 </body>
