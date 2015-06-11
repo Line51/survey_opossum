@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :logged_in?
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
@@ -58,6 +59,12 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  private def logged_in?
+    unless Author.find_by_id(session[:user_id])
+      redirect_to sessions_login_path, notice: 'User or Password does not match our records.'
     end
   end
 

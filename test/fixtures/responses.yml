@@ -3,9 +3,9 @@
 one:
   form_id: 1
   answer: MyString
-  question_id: 1
+  question: :one
 
 two:
   form_id: 1
   answer: MyString
-  question_id: 1
+  question: :one

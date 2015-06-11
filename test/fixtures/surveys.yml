@@ -3,9 +3,9 @@
 one:
   name: MyString
   description: MyString
-  author_id: 1
+  author: :one
 
 two:
   name: MyString
   description: MyString
-  author_id: 1
+  author: :one

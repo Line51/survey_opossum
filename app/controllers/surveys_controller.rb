@@ -1,4 +1,5 @@
 class SurveysController < ApplicationController
+  before_action :logged_in?
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
   # GET /surveys
@@ -14,7 +15,7 @@ class SurveysController < ApplicationController
 
   # GET /surveys/new
   def new
-    @survey = Survey.new
+    @survey = Survey.new(author_id: session[:user_id])
   end
 
   # GET /surveys/1/edit
@@ -58,6 +59,12 @@ class SurveysController < ApplicationController
     respond_to do |format|
       format.html { redirect_to surveys_url, notice: 'Survey was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  private def logged_in?
+    unless Author.find_by_id(session[:user_id])
+      redirect_to sessions_login_path, notice: 'User or Password does not match our records.'
     end
   end
 

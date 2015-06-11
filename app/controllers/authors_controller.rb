@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  before_action :logged_in?, except: [:new, :create]
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
   # GET /authors
@@ -58,6 +59,12 @@ class AuthorsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to authors_url, notice: 'Author was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  private def logged_in?
+    unless Author.find_by_id(session[:user_id])
+      redirect_to sessions_login_path, notice: 'User or Password does not match our records.'
     end
   end
 
