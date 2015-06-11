@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  before_action :logged_in?, except: [:new, :create]
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
   # GET /authors
@@ -61,6 +62,12 @@ class AuthorsController < ApplicationController
     end
   end
 
+  private def logged_in?
+    unless Author.find_by_id(session[:user_id])
+      redirect_to sessions_login_path, notice: 'User or Password does not match our records.'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_author
@@ -69,6 +76,6 @@ class AuthorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def author_params
-      params.require(:author).permit(:email, :password_digest, :first_name, :last_name)
+      params.require(:author).permit(:email, :password, :first_name, :last_name, :password_confirmation)
     end
 end

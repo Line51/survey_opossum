@@ -3,7 +3,6 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.integer :survey_id
       t.string :text
-      t.string :answer
       t.boolean :required
       t.integer :number
 

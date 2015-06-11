@@ -1,0 +1,25 @@
+<h1>Your Surveys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Survey</th>
+      <th>Number of Results</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.name %></td>
+        <td><%= survey.number_of_results %></td>
+        <td><%= link_to 'View Responses', survey %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Make New Survey', new_survey_path %>

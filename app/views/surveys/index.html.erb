@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Surveys</h1>
 
 <table>
@@ -7,8 +5,6 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th>String</th>
-      <th>Author</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,10 +14,8 @@
       <tr>
         <td><%= survey.name %></td>
         <td><%= survey.description %></td>
-        <td><%= survey.string %></td>
-        <td><%= survey.author_id %></td>
         <td><%= link_to 'Show', survey %></td>
-        <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
+        <td><%= link_to 'Edit Questions', edit_survey_path(survey) %></td>
         <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -31,3 +25,4 @@
 <br>
 
 <%= link_to 'New Survey', new_survey_path %>
+<%= link_to 'Home', root_path %>

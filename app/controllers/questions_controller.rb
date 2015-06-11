@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :logged_in?
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
@@ -61,6 +62,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  private def logged_in?
+    unless Author.find_by_id(session[:user_id])
+      redirect_to sessions_login_path, notice: 'User or Password does not match our records.'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
@@ -69,6 +76,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:survey_id, :text, :answer, :required, :number)
+      params.require(:question).permit(:survey_id, :text, :required, :number)
     end
 end

@@ -1,4 +1,5 @@
 class SurveysController < ApplicationController
+  before_action :logged_in?
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
   # GET /surveys
@@ -14,7 +15,7 @@ class SurveysController < ApplicationController
 
   # GET /surveys/new
   def new
-    @survey = Survey.new
+    @survey = Survey.new(author_id: session[:user_id])
   end
 
   # GET /surveys/1/edit
@@ -61,6 +62,12 @@ class SurveysController < ApplicationController
     end
   end
 
+  private def logged_in?
+    unless Author.find_by_id(session[:user_id])
+      redirect_to sessions_login_path, notice: 'User or Password does not match our records.'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_survey
@@ -69,6 +76,6 @@ class SurveysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
-      params.require(:survey).permit(:name, :description, :string, :author_id)
+      params.require(:survey).permit(:name, :description, :author_id)
     end
 end

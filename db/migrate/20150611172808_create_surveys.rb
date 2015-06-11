@@ -3,7 +3,6 @@ class CreateSurveys < ActiveRecord::Migration
     create_table :surveys do |t|
       t.string :name
       t.string :description
-      t.string :string
       t.integer :author_id
 
       t.timestamps null: false
