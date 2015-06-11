@@ -3,13 +3,11 @@
 one:
   survey_id: 1
   text: MyString
-  answer: MyString
   required: false
   number: 1
 
 two:
   survey_id: 1
   text: MyString
-  answer: MyString
   required: false
   number: 1
