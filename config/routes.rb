@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'sessions/login'
+
+  get 'sessions/logout'
+
+  resources :questions
+  resources :authors
+  resources :surveys
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
