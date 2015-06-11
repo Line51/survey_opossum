@@ -2,6 +2,7 @@ require 'test_helper'
 
 class SurveysControllerTest < ActionController::TestCase
   setup do
+    session[:user_id] = authors(:one).id
     @survey = surveys(:one)
   end
 
