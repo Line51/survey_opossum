@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150611172037) do
-=======
 ActiveRecord::Schema.define(version: 20150611174048) do
->>>>>>> c4b7b1eb74faf2908bb0a11a18dcbf17dcd919f7
 
   create_table "authors", force: :cascade do |t|
     t.string   "email"
@@ -29,22 +25,12 @@ ActiveRecord::Schema.define(version: 20150611174048) do
   create_table "questions", force: :cascade do |t|
     t.integer  "survey_id"
     t.string   "text"
-<<<<<<< HEAD
-    t.string   "answer"
-=======
->>>>>>> c4b7b1eb74faf2908bb0a11a18dcbf17dcd919f7
     t.boolean  "required"
     t.integer  "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-  create_table "surveys", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "string"
-=======
   create_table "responses", force: :cascade do |t|
     t.integer  "form_id"
     t.string   "answer"
@@ -56,7 +42,6 @@ ActiveRecord::Schema.define(version: 20150611174048) do
   create_table "surveys", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
->>>>>>> c4b7b1eb74faf2908bb0a11a18dcbf17dcd919f7
     t.integer  "author_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
