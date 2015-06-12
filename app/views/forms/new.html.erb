@@ -1,0 +1,43 @@
+<%= form_for(@form) do |f| %>
+  <% if @form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <ul>
+      <% @form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :survey_id, value: params[:survey_id] %>
+  </div>
+
+  <h2><%= @form.survey.name %></h2>
+  <%= f.fields_for(:responses) do |ff| %>
+    <%= @questions[ff.index].number %>.
+    <%= @questions[ff.index].text %>
+    <div class="field">
+      <%= ff.hidden_field :question_id, value: @questions[ff.index].id %>
+    </div>
+    <div class="field">
+      <%= ff.label :answer, "Your response" %>
+      <% if @questions[ff.index].response_type == "string" %>
+        <%= ff.text_field :answer %>
+      <% elsif @questions[ff.index].response_type == "text" %>
+        <%= ff.text_area :answer %>
+      <% else %>
+        <%= ff.radio_button :answer, 'Yes' %>
+        <%= ff.label :answer, "Yes", :value => "yes" %>
+        <%= ff.radio_button :answer, "No" %>
+        <%= ff.label :answer, "No", :value => "no" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit 'Submit Responses'%>
+  </div>
+
+  <% end %>

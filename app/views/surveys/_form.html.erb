@@ -22,7 +22,37 @@
   <div class="field">
     <%= f.hidden_field :author_id %>
   </div>
+
+  <h2>Questions</h2>
+  <%= f.fields_for(:questions) do |ff| %>
+    <span><%= ff.index + 1 %>. </span>
+    <div class="field">
+      <%= ff.hidden_field :number, value: ff.index + 1 %>
+    </div>
+    <div class="field">
+      <%= ff.label :text, "Question" %><br>
+      <%= ff.text_field :text %>
+    </div>
+    <div class="field">
+      <%= ff.label :response_type %><br>
+      <%= ff.select :response_type, [["Yes/No", "yes/no"], ["Short Answer", "string"], ["Long Answer", "text"]] %>
+    </div>
+    <div class="field">
+      <%= ff.label :required %>
+      <%= ff.check_box :required %>
+    </div>
+    <div class="field">
+      <%= ff.label :_destroy %>
+      <%= ff.check_box :_destroy %>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit Question'%>
   </div>
+
+  <div class="actions">
+    <%= link_to 'Finish Survey', surveys_path %>
+  </div>
+
 <% end %>
