@@ -9,6 +9,12 @@ Rails.application.routes.draw do
 
   get 'dashboard/home'
   root 'dashboard#home'
+
+  resources 'forms', :only => [:new, :create] do
+    collection do
+      get 'thankyou'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

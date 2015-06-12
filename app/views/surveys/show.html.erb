@@ -15,9 +15,15 @@
 <ol>
   <% @survey.questions.each do |q| %>
       <li><%= q.text %></li>
+      <ul>
+        <% @some_responses = @responses.select{ |response| response.question_id == q.id }%>
+        <% @some_responses.each do |r| %>
+          <li><%= r.answer %></li>
+        <% end %>
+      </ul>
   <% end %>
 </ol>
 
-<%= link_to 'Edit', edit_survey_path(@survey) %> |
+<%= link_to 'Edit', edit_survey_path(@survey) %>
 <%= link_to 'Back', surveys_path %>
 <%= link_to 'Home', root_path %>

@@ -1,7 +1,11 @@
 class FormsController < ApplicationController
 
   def new
-    @form = Form.new
+    @questions = Question.where(survey_id: params[:id]).all
+    @form = Form.new(survey_id: params[:id])
+    @questions.length.times do
+      @form.responses.build
+    end
   end
 
   def create
@@ -9,7 +13,7 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       if @form.save
-        format.html { redirect_to forms_thankyou_path, notice: 'Thank you for submitting your responses.' }
+        format.html { redirect_to thankyou_forms_path, notice: 'Thank you for submitting your responses.' }
         format.json { render :show, status: :created, location: @form }
       else
         format.html { render :new }
