@@ -23,7 +23,16 @@
     </div>
     <div class="field">
       <%= ff.label :answer, "Your response" %>
-      <%= ff.text_field :answer %>
+      <% if @questions[ff.index].response_type == "string" %>
+        <%= ff.text_field :answer %>
+      <% elsif @questions[ff.index].response_type == "text" %>
+        <%= ff.text_area :answer %>
+      <% else %>
+        <%= ff.radio_button :answer, 'Yes' %>
+        <%= ff.label :answer, "Yes", :value => "yes" %>
+        <%= ff.radio_button :answer, "No" %>
+        <%= ff.label :answer, "No", :value => "no" %>
+      <% end %>
     </div>
   <% end %>
 
