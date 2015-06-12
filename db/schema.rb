@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611174048) do
+ActiveRecord::Schema.define(version: 20150612105927) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "email"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20150611174048) do
     t.string   "text"
     t.boolean  "required"
     t.integer  "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "response_type"
   end
 
   create_table "responses", force: :cascade do |t|

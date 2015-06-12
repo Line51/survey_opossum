@@ -25,9 +25,17 @@
 
   <h2>Questions</h2>
   <%= f.fields_for(:questions) do |ff| %>
+    <span><%= ff.index + 1 %>. </span>
     <div class="field">
-      <%= ff.label :text %><br>
+      <%= ff.hidden_field :number, value: ff.index + 1 %>
+    </div>
+    <div class="field">
+      <%= ff.label :text, "Question" %><br>
       <%= ff.text_field :text %>
+    </div>
+    <div class="field">
+      <%= ff.label :response_type %><br>
+      <%= ff.select :response_type, [["Yes/No", "yes/no"], ["Short Answer", "string"], ["Long Answer", "text"]] %>
     </div>
     <div class="field">
       <%= ff.label :required %>

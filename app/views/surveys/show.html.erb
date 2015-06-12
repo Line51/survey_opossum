@@ -8,6 +8,16 @@
   <%= @survey.description %>
 </p>
 
+<p>
+  <strong>Questions:</strong>
+</p>
+
+<ol>
+  <% @survey.questions.each do |q| %>
+      <li><%= q.text %></li>
+  <% end %>
+</ol>
+
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>
 <%= link_to 'Home', root_path %>
