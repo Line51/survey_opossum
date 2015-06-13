@@ -24,8 +24,9 @@
   </div>
 
   <h2>Questions</h2>
-  <div>
+
     <%= f.fields_for(:questions) do |ff| %>
+    <div>
       <span><%= ff.index + 1 %>. </span>
       <div class="field">
         <%= ff.hidden_field :number, value: ff.index + 1 %>
@@ -46,8 +47,9 @@
         <%= ff.label :_destroy %>
         <%= ff.check_box :_destroy %>
       </div>
+    </div>
     <% end %>
-  </div>
+
 
   <div class="actions">
     <%= f.submit 'Submit Question'%>
