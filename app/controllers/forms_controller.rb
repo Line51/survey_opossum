@@ -6,12 +6,13 @@ class FormsController < ApplicationController
     @questions.length.times do
       @form.responses.build
     end
+    @answer_choices = AnswerChoice.all
   end
 
   def create
     @form = Form.new(form_params)
     @questions = Question.where(survey_id: params[:id]).all
-    
+
     respond_to do |format|
       if @form.save
         format.html { redirect_to thankyou_forms_path, notice: 'Thank you for submitting your responses.' }

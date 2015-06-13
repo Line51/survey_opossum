@@ -1,6 +1,9 @@
 class Question < ActiveRecord::Base
   belongs_to :survey
-  has_many :responses
+  has_many :responses, dependent: :destroy
+  has_many :answer_choices, dependent: :destroy
+  accepts_nested_attributes_for :answer_choices, reject_if: proc { |attributes| attributes['content'].blank?},
+      allow_destroy: true
 
   validates :text, presence: true
 

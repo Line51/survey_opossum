@@ -1,0 +1,30 @@
+<div>
+  <span><%= f.index + 1 %>. </span>
+  <div class="field">
+    <%= f.hidden_field :number, value: f.index + 1 %>
+  </div>
+  <div class="field">
+    <%= f.label :text, "Question" %><br>
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :response_type %><br>
+    <%= f.select :response_type, [["Yes/No", "yes/no"], ["Short Answer", "string"], ["Long Answer", "text"], ["Multiple Choice", "multi"]] %>
+  </div>
+  <div class="field">
+    <%= f.label :required %>
+    <%= f.check_box :required %>
+  </div>
+<div>
+  <p>Answer Choices</p>
+  <%= f.fields_for(:answer_choices) do |ff| %>
+    <%= render 'answer_choices', :f => ff %>
+  <% end %>
+
+
+</div>
+  <div class="field">
+    <%= f.label :_destroy %>
+    <%= f.check_box :_destroy %>
+  </div>
+</div>

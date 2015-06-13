@@ -1,7 +1,7 @@
 class Survey < ActiveRecord::Base
   belongs_to :author
   has_many :questions, dependent: :destroy
-  has_many :forms
+  has_many :forms, dependent: :destroy
 
   validates :name, uniqueness: true
 
