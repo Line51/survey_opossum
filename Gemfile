@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 group :production do
   gem 'rails_12factor'
   gem 'pg'
-  ruby '2.2.1'
+  ruby '2.2.2'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
