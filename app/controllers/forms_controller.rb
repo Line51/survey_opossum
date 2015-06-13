@@ -10,7 +10,8 @@ class FormsController < ApplicationController
 
   def create
     @form = Form.new(form_params)
-
+    @questions = Question.where(survey_id: params[:id]).all
+    
     respond_to do |format|
       if @form.save
         format.html { redirect_to thankyou_forms_path, notice: 'Thank you for submitting your responses.' }
