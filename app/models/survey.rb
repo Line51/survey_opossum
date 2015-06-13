@@ -9,7 +9,7 @@ class Survey < ActiveRecord::Base
       allow_destroy: true
 
   def number_of_results(id)
-    a = Survey.where(author_id: id).all
+    a = Form.where(survey_id: id).all
     a.length
   end
 end

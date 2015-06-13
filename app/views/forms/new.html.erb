@@ -11,11 +11,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.hidden_field :survey_id, value: params[:survey_id] %>
+    <%= f.hidden_field :survey_id, value: params[:id] %>
   </div>
 
   <h2><%= @form.survey.name %></h2>
   <%= f.fields_for(:responses) do |ff| %>
+    <% if @questions[ff.index].required %>
+      <h6> Required </h6>
+    <% end %>
     <%= @questions[ff.index].number %>.
     <%= @questions[ff.index].text %>
     <div class="field">

@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :logged_in?
 
   def home
-    @surveys = Survey.all
+    @surveys = Survey.where(author_id: session[:user_id])
   end
 
   private def logged_in?
