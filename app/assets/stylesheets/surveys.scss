@@ -39,17 +39,14 @@ body{
 	font-size: .8em;
 	border: 1px solid #E3F2FD;
 	border-radius: 10px;
-	width: 200px;
+	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.form-container input[type="text"] {
-	background-color: #BBDEFB
-}
-
-.form-container input[type="password"] {
-	background-color: #BBDEFB
+.form-container input[type="text"], .form-container input[type="password"] {
+	background-color: #BBDEFB;
+	color: #0D47A1;
 }
 
 .form-container input:hover {
@@ -68,10 +65,82 @@ body{
 .form-container  label {
 	color:#478BF9;
 	text-decoration: none;
-	padding: .5em;
+	//padding: .5em;
 }
 
 .form-container  a:hover {
 	background-color: #E3F2FD;
 	text-decoration: underline;
+}
+
+.question-wrapper {
+	padding: .5em;
+	line-height: 1em;
+}
+///Check box-style////
+input[type='checkbox'] {
+	display: none;
+}
+
+input[type='checkbox'] + label {
+	background-color: #E3F2FD;
+	padding: 9px;
+	border-radius: 5px;
+	display: inline-block;
+	position: relative;
+	margin-right: 30px;
+	width: 45px;
+	box-shadow: 0 0 1px rgba(0,0,0,0.6);
+	height: 10px;
+}
+
+input[type='checkbox'] + label:before {
+	content: ' ';
+	position: absolute;
+	background: #E3F2FD;
+	top: -1px;
+	z-index: 99999;
+	left: -1px;
+	width: 21px;
+	height: 30px;
+	border-radius: 3px;
+	box-shadow: 0 0 1px rgba(0,0,0,0.6), inset 0 -18px 15px -10px rgba(0,0,0,0.05);
+}
+
+input[type='checkbox'] + label:after {
+	content: 'NO';
+	position: absolute;
+	top: 0px;
+	left: 37px;
+	font-size: 1em;
+	color: #868686;
+}
+
+input[type='checkbox']:checked + label:after {
+	content: 'YES';
+	left: 8px;
+	color:#478BF9;
+}
+
+input[type='checkbox']:checked + label:before {
+	content: ' ';
+	position: absolute;
+	z-index: 99999;
+	left: 44px;
+}
+
+input[type='checkbox'] + label:before {
+	width: 21px;
+	height: 24px;
+	top: 2px;
+	left: 2px;
+}
+
+input[type='checkbox']:checked + label:before {
+	left: 40px;
+}
+
+input[type='checkbox'] + label:after, input[type='checkbox'] + label:before, #required label {
+	-webkit-transition: all 0.1s ease-in;
+	transition: all 0.1s ease-in;
 }

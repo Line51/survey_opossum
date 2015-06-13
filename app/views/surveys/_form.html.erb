@@ -24,7 +24,7 @@
   </div>
 
   <h2>Questions</h2>
-
+  
     <%= f.fields_for(:questions) do |ff| %>
     <div>
       <span><%= ff.index + 1 %>. </span>
@@ -40,16 +40,17 @@
         <%= ff.select :response_type, [["Yes/No", "yes/no"], ["Short Answer", "string"], ["Long Answer", "text"]] %>
       </div>
       <div class="field">
-        <%= ff.label :required %>
-        <%= ff.check_box :required %>
+        <%= ff.label :text, "Required?   " %>
+        <%= ff.check_box :required, :id => "required" + (ff.index + 1).to_s %>
+        <%= ff.label :_, :for => "required" + (ff.index + 1).to_s %>
       </div>
       <div class="field">
-        <%= ff.label :_destroy %>
-        <%= ff.check_box :_destroy %>
+        <%= ff.label :text, "Delete?    " %>
+        <%= ff.check_box :_destroy, :id => "destroy" + (ff.index + 1).to_s %>
+        <%= ff.label :_, :for => "destroy" + (ff.index + 1).to_s %>
       </div>
     </div>
     <% end %>
-
 
   <div class="actions">
     <%= f.submit 'Submit Question'%>
