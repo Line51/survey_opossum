@@ -5,7 +5,6 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answer_choices, reject_if: proc { |attributes| attributes['content'].blank?},
       allow_destroy: true
 
-  validates :text, presence: true
 
   def move_down
     next_question = Question.where(number: (self.number + 1)).first

@@ -1,3 +1,146 @@
 // Place all the styles related to the Surveys controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+	background-image: url("background.png");
+	color: #1E88E5
+}
+.form-container {
+	margin-top: 8em;
+	width: 70%;
+	background-color: #FFFFFF;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding: 1em;
+	box-shadow: 1px 1px 2px #1E88E5;
+	padding-bottom: 2em;
+	border-radius: 15px;
+	margin-bottom: 10em;
+	
+}
+
+.form-container h1 {
+	padding-top: 1em;
+	font-size: 2em;
+	font-weight: 200;
+}
+
+.form-container input {
+
+	margin-bottom: 1.7em;
+	padding: 1.2em;
+	background-color: #1565C0;
+	color: #E3F2FD;
+	border: none;
+	border-radius: 2%;
+	transition: 0.3s;
+	font-size: .8em;
+	border: 1px solid #E3F2FD;
+	border-radius: 10px;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form-container input[type="text"], .form-container input[type="password"] {
+	background-color: #BBDEFB;
+	color: #0D47A1;
+}
+
+.form-container input:hover {
+	background-color: #E3F2FD;
+	color:#1565C0;
+	transition: 0.3s;
+	border: 1px solid #1565C0;
+}
+
+.form-container  a {
+	color:#478BF9;
+	text-decoration: none;
+	padding: .5em;
+}
+
+.form-container  label {
+	color:#478BF9;
+	text-decoration: none;
+	//padding: .5em;
+}
+
+.form-container  a:hover {
+	background-color: #E3F2FD;
+	text-decoration: underline;
+}
+
+.question-wrapper {
+	padding: .5em;
+	line-height: 1em;
+}
+///Check box-style////
+input[type='checkbox'] {
+	display: none;
+}
+
+input[type='checkbox'] + label {
+	background-color: #E3F2FD;
+	padding: 9px;
+	border-radius: 5px;
+	display: inline-block;
+	position: relative;
+	margin-right: 30px;
+	width: 45px;
+	box-shadow: 0 0 1px rgba(0,0,0,0.6);
+	height: 10px;
+}
+
+input[type='checkbox'] + label:before {
+	content: ' ';
+	position: absolute;
+	background: #E3F2FD;
+	top: -1px;
+	z-index: 99999;
+	left: -1px;
+	width: 21px;
+	height: 30px;
+	border-radius: 3px;
+	box-shadow: 0 0 1px rgba(0,0,0,0.6), inset 0 -18px 15px -10px rgba(0,0,0,0.05);
+}
+
+input[type='checkbox'] + label:after {
+	content: 'NO';
+	position: absolute;
+	top: 0px;
+	left: 37px;
+	font-size: 1em;
+	color: #868686;
+}
+
+input[type='checkbox']:checked + label:after {
+	content: 'YES';
+	left: 8px;
+	color:#478BF9;
+}
+
+input[type='checkbox']:checked + label:before {
+	content: ' ';
+	position: absolute;
+	z-index: 99999;
+	left: 44px;
+}
+
+input[type='checkbox'] + label:before {
+	width: 21px;
+	height: 24px;
+	top: 2px;
+	left: 2px;
+}
+
+input[type='checkbox']:checked + label:before {
+	left: 40px;
+}
+
+input[type='checkbox'] + label:after, input[type='checkbox'] + label:before, #required label {
+	-webkit-transition: all 0.1s ease-in;
+	transition: all 0.1s ease-in;
+}

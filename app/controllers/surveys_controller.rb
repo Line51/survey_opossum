@@ -17,14 +17,14 @@ class SurveysController < ApplicationController
   # GET /surveys/new
   def new
     @survey = Survey.new(author_id: session[:user_id])
-    question = @survey.questions.build
-    4.times { question.answer_choices.build }
+    @survey.questions.build
+    @survey.questions.each { |question| 4.times { question.answer_choices.build }}
   end
 
   # GET /surveys/1/edit
   def edit
-    question = @survey.questions.build
-    4.times { question.answer_choices.build }
+    @survey.questions.build
+    @survey.questions.each { |question| 4.times { question.answer_choices.build }}
   end
 
   # POST /surveys
