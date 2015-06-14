@@ -33,7 +33,7 @@
             <%= ff.text_area :answer %>
           <% elsif @questions[ff.index].response_type == "multi" %>
             <% @answers = @answer_choices.where(question_id: @questions[ff.index].id) %>
-            <%= ff.select :answer, @answers.map{ |a| [a.content, a.content] } %>
+            <%= ff.select :answer, @answers.map{ |a| [a.content, a.content] }, include_blank: true %>
           <% else %>
             <%= ff.radio_button :answer, 'Yes' %>
             <%= ff.label :answer, "Yes", :value => "yes" %>

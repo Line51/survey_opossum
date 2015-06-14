@@ -15,11 +15,26 @@
 
 <ol>
   <% @survey.questions.each do |q| %>
+    <% @some_responses = @responses.select{ |response| response.question_id == q.id }%>
       <li><%= q.text %></li>
-      <ul>
-        <% @some_responses = @responses.select{ |response| response.question_id == q.id }%>
-        <% @some_responses.each do |r| %>
-          <li><%= r.answer %></li>
+        <ul>
+        <% if q.response_type == 'yes/no' %>
+          <% yes = @some_responses.count { |s| s.answer == "Yes" } %>
+          <% no = @some_responses.count { |s| s.answer == "No" } %>
+          <li>Yes <%= (yes.to_f / @some_responses.count.to_f) * 100 %>%</li>
+          <li>No <%= (no.to_f / @some_responses.count.to_f) * 100 %>%</li>
+        <% elsif q.response_type == 'multi' %>
+          <% @answers = AnswerChoice.where(question_id: q.id).all %>
+          <li><ul>
+            <% @answers.each do |n| %>
+              <% num = @some_responses.count { |s| s.answer == n.content }  %>
+              <li><%= n.content %> <%= (num.to_f / @answers.count.to_f) * 100 %>%</li>
+            <% end %>
+          </ul></li>
+        <% else %>
+          <% @some_responses.each do |r| %>
+            <li><%= r.answer %></li>
+          <% end %>
         <% end %>
       </ul>
   <% end %>
