@@ -31,6 +31,9 @@
             <%= ff.text_field :answer %>
           <% elsif @questions[ff.index].response_type == "text" %>
             <%= ff.text_area :answer %>
+          <% elsif @questions[ff.index].response_type == "multi" %>
+            <% @answers = @answer_choices.where(question_id: @questions[ff.index].id) %>
+            <%= ff.select :answer, @answers.map{ |a| [a.content, a.content] } %>
           <% else %>
             <%= ff.radio_button :answer, 'Yes' %>
             <%= ff.label :answer, "Yes", :value => "yes" %>

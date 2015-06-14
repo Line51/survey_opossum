@@ -24,7 +24,7 @@
   </div>
 
   <h2>Questions</h2>
-  <%= f.fields_for(:questions) do |ff| %>
+  <%= f.fields_for :questions do |ff| %>
     <%= render 'questions', :f => ff %>
   <% end %>
   <div class="actions">

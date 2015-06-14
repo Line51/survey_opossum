@@ -17,14 +17,14 @@ class SurveysController < ApplicationController
   # GET /surveys/new
   def new
     @survey = Survey.new(author_id: session[:user_id])
-    @survey.questions.build
-    @survey.questions.each { |question| 4.times { question.answer_choices.build }}
+    @questions = @survey.questions.build
+    @answer_choices = 4.times { @questions.answer_choices.build }
   end
 
   # GET /surveys/1/edit
   def edit
-    @survey.questions.build
-    @survey.questions.each { |question| 4.times { question.answer_choices.build }}
+    @questions = @survey.questions.build
+    @answer_choices = 4.times { @questions.answer_choices.build }
   end
 
   # POST /surveys
@@ -83,6 +83,6 @@ class SurveysController < ApplicationController
     def survey_params
       params.require(:survey).permit(:name, :description, :author_id,
           questions_attributes: [:id, :text, :required, :response_type,
-          :_destroy, :number, :answer_choices_attributes])
+          :_destroy, :number, answer_choices_attributes: [:id, :content, :_destroy]])
     end
 end
