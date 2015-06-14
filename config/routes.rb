@@ -7,8 +7,7 @@ Rails.application.routes.draw do
 
   resources :authors
 
-  get 'dashboard/home'
-  root 'dashboard#home'
+  root 'surveys#index'
 
   resources 'forms', :only => [:new, :create] do
     collection do

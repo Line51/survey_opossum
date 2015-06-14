@@ -28,7 +28,7 @@
           <li><ul>
             <% @answers.each do |n| %>
               <% num = @some_responses.count { |s| s.answer == n.content }  %>
-              <li><%= n.content %> <%= (num.to_f / @answers.count.to_f) * 100 %>%</li>
+              <li><%= n.content %> <%= (num.to_f / @some_responses.count.to_f) * 100 %>%</li>
             <% end %>
           </ul></li>
         <% else %>
