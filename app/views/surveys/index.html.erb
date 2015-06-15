@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Survey</th>
-      <th>Description</th>
       <th>Number of Results</th>
       <th>User Link</th>
       <th colspan="1"></th>
@@ -15,7 +14,6 @@
     <% @surveys.each do |survey| %>
       <tr>
         <td><%= link_to "#{survey.name}", edit_survey_path(survey.id) %></td>
-        <td><%= survey.description %></td>
         <td><%= link_to "#{survey.number_of_results(survey.id)}", survey %></td>
         <td><a href="<%= "http://survey-crow.herokuapp.com/forms/new?id=#{survey.id}" %>"><%= "http://survey-crow.herokuapp.com/forms/new?id=#{survey.id}" %></a></td>
         <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
