@@ -1,13 +1,13 @@
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Special Elite", arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Special Elite", arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -70,10 +70,13 @@ div {
 
 .crowpic{
   height:100px;
-  background-repeat: repeat-x;
-  text-align: center;
 }
 
+.crowpic2{
+  margin-left:42%;
+  height: 100px;
+
+}
 header{
   font-size: 200%;
   color:black;
