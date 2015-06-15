@@ -17,8 +17,11 @@
   </div>
 <div>
   <p>Answer Choices</p>
+  <div class="answer-choices-field">
+  </div>
+  
   <%= f.fields_for :answer_choices do |ff| %>
-    <%= render 'answer_choices', :f => ff %>
+  <%= render 'answer_choices', :f => ff %>
   <% end %>
 
 
