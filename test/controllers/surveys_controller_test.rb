@@ -19,10 +19,10 @@ class SurveysControllerTest < ActionController::TestCase
 
   test "should create survey" do
     assert_difference('Survey.count') do
-      post :create, survey: { author_id: @survey.author_id, description: @survey.description, name: @survey.name }
+      post :create, survey: { author_id: @survey.author_id, description: @survey.description, name: "survey3" }
     end
 
-    assert_redirected_to survey_path(assigns(:survey))
+    assert_redirected_to edit_survey_path(assigns(:survey))
   end
 
   test "should show survey" do
@@ -37,7 +37,7 @@ class SurveysControllerTest < ActionController::TestCase
 
   test "should update survey" do
     patch :update, id: @survey, survey: { author_id: @survey.author_id, description: @survey.description, name: @survey.name }
-    assert_redirected_to survey_path(assigns(:survey))
+    assert_redirected_to edit_survey_path(assigns(:survey))
   end
 
   test "should destroy survey" do

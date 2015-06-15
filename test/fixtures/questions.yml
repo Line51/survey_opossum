@@ -2,12 +2,12 @@
 
 one:
   survey: :one
-  text: MyString
+  text: "question"
   required: false
   number: 1
 
 two:
   survey: :one
-  text: MyString
+  text: "question2"
   required: false
-  number: 1
+  number: 2
