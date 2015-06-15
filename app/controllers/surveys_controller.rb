@@ -18,7 +18,7 @@ class SurveysController < ApplicationController
   # GET /surveys/new
   def new
     @survey = Survey.new(author_id: session[:user_id])
-    @questions = @survey.questions.build
+    @questions = 2.times { @survey.questions.build }
     @answer_choices = 4.times { @questions.answer_choices.build }
   end
 
