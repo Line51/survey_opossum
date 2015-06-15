@@ -5,9 +5,11 @@ one:
   text: "question"
   required: false
   number: 1
+  response_type: "yes/no"
 
 two:
   survey: :one
   text: "question2"
   required: false
   number: 2
+  response_type: "string"
