@@ -13,7 +13,7 @@
     <% end %>
 
     <div class="field">
-      <%= f.hidden_field :survey_id, value: params[:id] %>
+      <%= f.hidden_field :survey_id, value: params[:survey_id] %>
     </div>
     <h2><%= @form.survey.name %></h2>
     <%= f.fields_for(:responses) do |ff| %>
