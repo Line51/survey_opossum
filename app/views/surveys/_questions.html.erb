@@ -16,15 +16,15 @@
     <%= f.check_box :required %>
   </div>
 <div>
-  <p>Answer Choices</p>
-  <%= f.fields_for :answer_choices do |ff| %>
-    <%= render 'answer_choices', :f => ff %>
-  <% end %>
-
-
 </div>
   <div class="field">
     <%= f.label :_destroy %>
     <%= f.check_box :_destroy %>
   </div>
 </div>
+
+
+<p>Answer Choices</p>
+<%= f.fields_for :answer_choices do |ff| %>
+  <%= render 'answer_choices', :f => ff %>
+<% end %>

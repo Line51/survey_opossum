@@ -17,23 +17,23 @@
     </div>
     <h2><%= @form.survey.name %></h2>
     <%= f.fields_for(:responses) do |ff| %>
-      <% if @questions[ff.index].required %>
+      <% question = ff.object.question %>
+      <% if question.required %>
         <h6> Required </h6>
       <% end %>
-      <%= @questions[ff.index].number %>.
-      <%= @questions[ff.index].text %>
+      <%= question.number %>.
+      <%= question.text %>
       <div class="field">
-        <%= ff.hidden_field :question_id, value: @questions[ff.index].id %>
+        <%= ff.hidden_field :question_id %>
       </div>
       <div class="field">
           <%= ff.label :answer, "Your response" %><br>
-          <% if @questions[ff.index].response_type == "string" %>
+          <% if question.response_type == "string" %>
             <%= ff.text_field :answer %>
-          <% elsif @questions[ff.index].response_type == "text" %>
+          <% elsif question.response_type == "text" %>
             <%= ff.text_area :answer %>
-          <% elsif @questions[ff.index].response_type == "multi" %>
-            <% @answers = @answer_choices.where(question_id: @questions[ff.index].id) %>
-            <%= ff.select :answer, @answers.map{ |a| [a.content, a.content] }, include_blank: true %>
+          <% elsif question.response_type == "multi" %>
+            <%= ff.select :answer, question.answer_choices.map{ |a| [a.content, a.content] }, include_blank: true %>
           <% else %>
             <%= ff.radio_button :answer, 'Yes' %>
             <%= ff.label :answer, "Yes", :value => "yes" %>
