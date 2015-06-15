@@ -1,3 +1,5 @@
+
+<img src='http://www.clker.com/cliparts/1/4/3/4/1258661944702491623drunken_duck_crow_silhouette.svg.hi.png' class='crowpic'>
 <div class="form-container">
 <p>
   <strong>Name:</strong>
@@ -13,6 +15,7 @@
   <strong>Questions:</strong>
 </p>
 
+<div class="ol">
 <ol>
   <% @survey.questions.each do |q| %>
     <% @some_responses = @responses.select{ |response| response.question_id == q.id }%>
@@ -39,6 +42,7 @@
       </ul>
   <% end %>
 </ol>
+</div>
 
 <%= link_to 'Edit', edit_survey_path(@survey) %>
 <%= link_to 'Back', surveys_path %>
