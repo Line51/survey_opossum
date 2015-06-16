@@ -1,3 +1,4 @@
+<div class="survey-form">
 <%= form_for(@survey) do |f| %>
   <% if @survey.errors.any? %>
     <div id="error_explanation">
@@ -11,6 +12,7 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -22,17 +24,26 @@
   <div class="field">
     <%= f.hidden_field :author_id %>
   </div>
-
+  
+  <div class="question-field">
+  </div>
+  
+ <script id="newQuestion" type="text/html">
+  <div class="question-wrapper">
   <h2>Questions</h2>
   <%= f.fields_for :questions do |ff| %>
+   
     <%= render 'questions', :f => ff %>
+  </div>
   <% end %>
+  
+</script>
+ 
   <div class="actions">
-    <%= f.submit 'Submit Question'%>
+    <%= f.submit 'Submit Survey' %>
   </div>
-
-  <div class="actions">
-    <%= link_to 'Finish Survey', surveys_path %>
-  </div>
+  <button class="add-question">Add Question</button>
+ </div> 
 
 <% end %>
+
