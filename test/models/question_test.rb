@@ -16,4 +16,5 @@ class QuestionTest < ActiveSupport::TestCase
     question.move_up
     assert_equal 1, question.number
   end
+
 end

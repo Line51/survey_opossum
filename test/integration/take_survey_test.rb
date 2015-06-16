@@ -14,4 +14,20 @@ class TakeSurveyTest < ActionDispatch::IntegrationTest
 
 
   end
+
+  test "required questions must be answered" do
+    get new_form_path(survey_id: surveys(:two).id)
+    assert_select "input", 5
+
+    post forms_path(form: { survey_id: surveys(:two).id, responses_attributes: { 0 =>
+      {question_id: questions(:three).id, form_id: 1}}, commit: :submit_responses})
+
+    refute response.body.match("Thank you")
+
+    post forms_path(form: { survey_id: surveys(:two).id, responses_attributes: { 0 =>
+      {question_id: questions(:three).id, answer: "text", form_id: 1}}, commit: :submit_responses})
+
+    assert response.body.match("Thank you")
+
+  end
 end

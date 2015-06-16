@@ -13,3 +13,10 @@ two:
   required: false
   number: 2
   response_type: "string"
+
+three:
+  survey: :two
+  text: "question3"
+  required: true
+  number: 1
+  response_type: "string"
