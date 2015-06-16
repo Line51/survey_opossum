@@ -13,3 +13,38 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function () {
+  if (!$('.survey-form').length) {
+    return;
+  }
+    $('.add-question').on('click', function (e) {
+    e.preventDefault();
+    addnewQuestion ('newQuestion');
+  })
+  
+   $('.question-field').on('change', 'select', function () {
+    if($('select').val() === 'multi')  {
+      $('.answer-choices').show();
+    }
+    else{
+      $('.answer-choices').hide();
+    }
+  })
+ 
+  
+ 
+
+});
+
+ 
+
+
+function addnewQuestion(template, model) {
+
+  var fn = _.template($('#' + template).html(), { variable: 'm' });
+  var newhtml= fn(model);
+   newhtml = newhtml.replace( /\[[0-9]+\]/g,'[' + $('.question-wrapper').length + ']');
+  $('.question-field').append(newhtml);
+  console.log(fn);
+}

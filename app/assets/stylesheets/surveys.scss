@@ -57,6 +57,7 @@ body{
 }
 
 .form-container input[type="submit"] {
+	margin-top: 3em;
 	max-width: 40%;
 }
 
@@ -88,10 +89,17 @@ body{
 .question-wrapper {
 	padding: .5em;
 	line-height: 1em;
+	border-top: 1px solid #0D47A1;
 }
+
+.question-field{
+	border-bottom: 1px solid #0D47A1;
+}
+
+
 ///Check box-style////
 input[type='checkbox'] {
-	display: none;
+	//display: none;
 }
 
 input[type='checkbox'] + label {
@@ -188,6 +196,7 @@ input[type='radio'] {
 	margin-bottom: 1em;
 }
 
+
 ol{
 	color:black;
 	text-align: left;
@@ -198,3 +207,10 @@ ul
 {
     list-style-type: none;
 }
+
+////display multiple choice///
+
+.answer-choices{
+	display: none;
+}
+
