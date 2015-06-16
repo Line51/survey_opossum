@@ -20,7 +20,7 @@ class TakeSurveyTest < ActionDispatch::IntegrationTest
     assert_select "input", 5
 
     post forms_path(form: { survey_id: surveys(:two).id, responses_attributes: { 0 =>
-      {question_id: questions(:three).id, form_id: 1}}, commit: :submit_responses})
+      {question_id: questions(:three).id, answer: "", form_id: 1}}, commit: :submit_responses})
 
     refute response.body.match("Thank you")
 
